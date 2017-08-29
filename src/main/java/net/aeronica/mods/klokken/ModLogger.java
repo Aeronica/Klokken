@@ -29,6 +29,8 @@ public class ModLogger {
 
     private static Logger logger;
 
+    private ModLogger() { /* NOP */ }
+    
     public static void setLogger(Logger logger) {
         if (ModLogger.logger != null) {
             throw new IllegalStateException("Attempt to replace logger");

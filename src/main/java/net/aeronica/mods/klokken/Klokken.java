@@ -22,6 +22,9 @@
  */
 package net.aeronica.mods.klokken;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import net.aeronica.mods.klokken.server.ServerProxy;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
@@ -42,7 +45,9 @@ public class Klokken
     public static final String MODNAME = "Klokken";
     public static final String VERSION = "{@VERSION}";
     public static final String DEPS = "required-after:forge@[1.9.4-12.17.0.2051,)";
-    public static final String UPDATE = ""; //"https://gist.githubusercontent.com/Aeronica/dbc2619e0011d5bdbe7a162d0c6aa82b/raw/klokken_update.json";
+    public static final String UPDATE = "https://gist.githubusercontent.com/Aeronica/7a45ac51d0acfdabc19fa5bef8034e23/raw/6c6b76bf4a596dfeaca5be5329466acc70ee14c4/klokken_update.json";
+    
+    private static final Logger LOGGER = LogManager.getFormatterLogger("Klokken");
     
     @Mod.Instance(MODID)
     public static Klokken instance;
@@ -63,7 +68,6 @@ public class Klokken
     public void init(FMLInitializationEvent event)
     {
         proxy.init();
-        // NetworkRegistry.INSTANCE.registerGuiHandler(instance, GUIHandler.getInstance());
     }
 
     @Mod.EventHandler
@@ -74,7 +78,7 @@ public class Klokken
 
     @Mod.EventHandler
     public void onFingerprintViolation(FMLFingerprintViolationEvent event) {
-        System.out.printf("*** [Klokken] Invalid fingerprint detected! ***\n");
+        LOGGER.warn("Problem with Signed Jar: %s", event.description());
     }
     
     public static String prependModID(String name)
