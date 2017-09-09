@@ -52,6 +52,8 @@ public class Klokken
     
     public static final CreativeTabs TAB = new ModTab();
 
+    private Klokken() { /* NOP */ }
+    
     private static final class Holder {
         private static final Klokken INSTANCE = new Klokken();
     }
