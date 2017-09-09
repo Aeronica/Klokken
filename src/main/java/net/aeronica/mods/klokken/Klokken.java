@@ -28,6 +28,7 @@ import org.apache.logging.log4j.Logger;
 import net.aeronica.mods.klokken.server.ServerProxy;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.InstanceFactory;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -49,13 +50,21 @@ public class Klokken
     
     private static final Logger LOGGER = LogManager.getFormatterLogger("Klokken");
     
-    @Mod.Instance(MODID)
-    public static Klokken instance;
+    public static final CreativeTabs TAB = new ModTab();
 
-    @SidedProxy(clientSide = "net.aeronica.mods.klokken.client.ClientProxy", serverSide = "net.aeronica.mods.klokken.server.ServerProxy")
+    private static final class Holder {
+        private static final Klokken INSTANCE = new Klokken();
+    }
+    
+    @InstanceFactory
+    public static Klokken instance() {
+        return Holder.INSTANCE;
+    }
+
+    @SidedProxy(
+            clientSide = "net.aeronica.mods.klokken.client.ClientProxy",
+            serverSide = "net.aeronica.mods.klokken.server.ServerProxy")
     public static ServerProxy proxy;
-
-    public static final CreativeTabs TAB_KLOKKEN = new ModTab();
     
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
