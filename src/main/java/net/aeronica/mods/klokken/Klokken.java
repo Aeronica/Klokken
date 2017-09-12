@@ -55,6 +55,7 @@ public class Klokken
     private Klokken() { /* NOP */ }
     
     private static final class Holder {
+        private Holder() { /* NOP */ }
         private static final Klokken INSTANCE = new Klokken();
     }
     
