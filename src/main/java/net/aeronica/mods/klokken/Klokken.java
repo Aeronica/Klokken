@@ -90,7 +90,7 @@ public class Klokken
 
     @Mod.EventHandler
     public void onFingerprintViolation(FMLFingerprintViolationEvent event) {
-        LOGGER.warn("Problem with Signed Jar: %s", event.description());
+        LOGGER.warn("Problem with Signed Jar: {}", event.description());
     }
     
     public static String prependModID(String name)
