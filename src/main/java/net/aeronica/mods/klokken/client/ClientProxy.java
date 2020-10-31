@@ -27,5 +27,21 @@ import net.aeronica.mods.klokken.server.ServerProxy;
 public class ClientProxy extends ServerProxy
 {
 
+    @Override
+    public void preInit()
+    {
+        super.preInit();
+    }
 
+    @Override
+    public void init()
+    {
+        super.init();
+    }
+
+    @Override
+    public void postInit()
+    {
+        super.postInit();
+    }
 }
