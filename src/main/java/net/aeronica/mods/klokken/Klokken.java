@@ -48,7 +48,7 @@ public class Klokken
     public static final String DEPS = "required-after:forge@[1.9.4-12.17.0.2051,)";
     public static final String UPDATE = "https://gist.githubusercontent.com/Aeronica/7a45ac51d0acfdabc19fa5bef8034e23/raw/6c6b76bf4a596dfeaca5be5329466acc70ee14c4/klokken_update.json";
     
-    private static final Logger LOGGER = LogManager.getFormatterLogger("Klokken");
+    private static final Logger LOGGER = LogManager.getFormatterLogger(MODNAME);
     
     public static final CreativeTabs TAB = new ModTab();
 
@@ -90,7 +90,7 @@ public class Klokken
 
     @Mod.EventHandler
     public void onFingerprintViolation(FMLFingerprintViolationEvent event) {
-        LOGGER.warn("Problem with Signed Jar: {}", event.description());
+        LOGGER.warn("Problem with the {} Jar Signature!", MODNAME);
     }
     
     public static String prependModID(String name)
