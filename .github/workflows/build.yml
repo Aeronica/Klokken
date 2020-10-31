@@ -1,9 +1,7 @@
 name: Build
 on:
   push:
-    branches:
-      - master
-      - 1.12
+    branches: [ 1.12 ]
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
@@ -24,8 +22,10 @@ jobs:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
-      - name: Setup workspace
-          run: ./gradlew setupCIWorkspace -s
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Setup Forge CI workspace
+        run: ./gradlew setupCIWorkspace -s
       - name: Cache Gradle packages
         uses: actions/cache@v1
         with:
