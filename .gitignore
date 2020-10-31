@@ -29,8 +29,8 @@ $RECYCLE.BIN/
 .classpath
 .project
 .settings
-.gradle
 .launch
+.gradle
 bin
 build
 run
@@ -42,6 +42,7 @@ lib
 !gradle
 !gradlew
 !gradlew.bat
+!.gradle/workflows
 
 # OSX
 # =========================

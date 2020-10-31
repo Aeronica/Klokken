@@ -10,12 +10,14 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-		classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7'
+		classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.0'
     }
 }
 
+plugins {
+    id "org.sonarqube" version "3.0"
+}
 apply plugin: 'net.minecraftforge.gradle.forge'
-apply plugin: 'org.sonarqube'
 apply plugin: 'java'
 
 sourceCompatibility = targetCompatibility = "1.8"
@@ -81,11 +83,10 @@ processResources {
 }
 
 sonarqube {
-    properties {  
-        property "sonar.projectName", "Klokken"
+    properties {
+        property "sonar.projectKey", "AeronicaMC_Klokken"
         property "sonar.host.url", "https://sonarcloud.io"
-        //property "sonar.branch.name", "${config.projectBranch}"
-        property "sonar.coverage.exclusions", "**/*"
+        property "sonar.organization", "aeronicamc"
     }
 }
 
