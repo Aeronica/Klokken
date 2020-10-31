@@ -42,7 +42,6 @@ lib
 !gradle
 !gradlew
 !gradlew.bat
-!.gradle/workflows
 
 # OSX
 # =========================
